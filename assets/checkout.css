@@ -95,6 +95,7 @@
 .co-sold .card h2{display:block;font-size:28px;line-height:1.1;margin:14px 0 0}
 .co-sold .card p{font-size:15px;margin:12px 0 0}
 .co-sold .sum{margin-top:16px;background:var(--baby);border-radius:8px;padding:10px 12px;font-size:13px;text-align:left}
+.co-sold .nocharge{margin-top:12px;background:var(--navy);color:var(--baby);border-radius:8px;padding:10px 12px;font-weight:700;font-size:14px}
 .co-sold .fine{font-size:12px;color:var(--muted);margin-top:18px}
 .co-sold .co-btn{margin-top:20px}
 .co-err{justify-self:start;text-align:left}

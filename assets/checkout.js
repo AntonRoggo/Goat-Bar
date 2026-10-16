@@ -126,10 +126,10 @@
   function soldOut(state) {
     $("#coSoldSum").innerHTML = `Your order: ${cart.map(i => `${i.qty} × ${i.size} bars (${i.plan === "sub" ? "subscribe, every " + i.every : "one-time"})`).join(", ")} · <b>${money(t.value)}</b><br>Ship to: ${val("first")} ${val("last")}, ${val("city")}, ${val("state")}`;
     $("#coSoldP").textContent = {
-      saved: "The first batch of Goat Bar is gone. We saved your spot and we'll email " + val("email") + " the moment it's back.",
-      noconsent: "The first batch of Goat Bar is gone. Want an email the moment it's back?",
-      unavailable: "The first batch of Goat Bar is gone. Email signup isn't connected yet, so your spot was not saved. Please check back soon.",
-      error: "The first batch of Goat Bar is gone. We couldn't save your spot. Check your connection and try again."
+      saved: "Check your inbox at " + val("email") + " and confirm your email. Once confirmed, we'll email you the moment Goat Bar is live. You won't be charged.",
+      noconsent: "Want an email the moment Goat Bar is live? You won't be charged.",
+      unavailable: "Email signup isn't connected yet, so we can't notify you. Please check back soon.",
+      error: "We couldn't save your email. Check your connection and try again."
     }[state];
     $("#coSoldRetry").hidden = !(state === "noconsent" || state === "error");
     $("#coSoldRetry").textContent = state === "noconsent" ? "Email me when it's back" : "Try again";

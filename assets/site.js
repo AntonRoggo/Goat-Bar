@@ -75,8 +75,8 @@
     <div class="gb-card">
       <button class="gb-x" id="gbModalX" aria-label="Close">×</button>
       <div class="gb-tag" id="gbModalTag">Sold out</div>
-      <h2 id="gbModalH">Sold out. You're first in line when it's back.</h2>
-      <p id="gbModalP">The first batch of Goat Bar is gone. Leave your email and we'll tell you the moment it's back.</p>
+      <h2 id="gbModalH">Sold out. You haven't been charged.</h2>
+      <p id="gbModalP">Nothing was purchased. Leave your email and we'll tell you the moment Goat Bar is live.</p>
       <div class="gb-sum" id="gbSum"></div>
       <form id="gbForm" novalidate>
         <label for="gbEmail">Email</label>
@@ -85,8 +85,8 @@
         <button class="gb-checkout" type="submit" id="gbSubmit">Notify me</button>
         <p class="gb-err" id="gbErr" role="status" aria-live="polite" hidden></p>
       </form>
-      <div id="gbDone" hidden><h3>You're on the list.</h3><p>We'll email you the moment Goat Bar is back.</p><button class="gb-mini" data-closemodal>Keep browsing</button></div>
-      <p class="gb-fine">No payment was taken. By signing up you agree to our <a href="/pages/privacy/">privacy policy</a>.</p>
+      <div id="gbDone" hidden><h3>Check your inbox.</h3><p>Confirm your email and we'll tell you the moment Goat Bar is live. You won't be charged.</p><button class="gb-mini" data-closemodal>Keep browsing</button></div>
+      <p class="gb-fine">No payment was taken and you won't be charged. By signing up you agree to our <a href="/pages/privacy/">privacy policy</a>.</p>
     </div>
   </div>`;
   document.body.insertAdjacentHTML("beforeend", drawerHTML);
@@ -136,8 +136,8 @@
     modal.dataset.source = source;
     const next = source === "upsell_notify";
     $("#gbModalTag").textContent = next ? "Coming soon" : "Sold out";
-    $("#gbModalH").textContent = next ? "The next flavor is on its way." : "Sold out. You're first in line when it's back.";
-    $("#gbModalP").textContent = next ? "Leave your email and we'll tell you when it drops." : "The first batch of Goat Bar is gone. Leave your email and we'll tell you the moment it's back.";
+    $("#gbModalH").textContent = next ? "The next flavor is on its way." : "Sold out. You haven't been charged.";
+    $("#gbModalP").textContent = next ? "Leave your email and we'll tell you when it drops." : "Nothing was purchased. Leave your email and we'll tell you the moment Goat Bar is live.";
     $("#gbForm").hidden = false; $("#gbDone").hidden = true; $("#gbErr").hidden = true;
     if (!signupReady) { $("#gbErr").textContent = signupPending; $("#gbErr").hidden = false; }
     modal.hidden = false; setTimeout(() => $("#gbEmail").focus(), 50);

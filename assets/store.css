@@ -99,6 +99,7 @@
 .gb-hh::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,29,55,.28),rgba(12,29,55,.42) 55%,rgba(12,29,55,.55))}
 .gb-hh-t{position:relative;z-index:1;display:grid;justify-items:center;gap:14px;padding:0 var(--gut);max-width:760px}
 .gb-hh h1{font-size:clamp(40px,6.4vw,86px);line-height:1;letter-spacing:-.01em;text-shadow:0 2px 18px rgba(0,15,35,.35)}
+.gb-hh h1 .l2{display:block;font-size:.5em;line-height:1.1;margin-top:.25em}
 .gb-hh p{margin:0;font-size:clamp(16px,1.6vw,20px);color:#EEF3F8}
 .gb-hh-btn{margin-top:8px;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--navy);border-radius:10px;padding:13px 20px;font:700 15px var(--display);text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .gb-hh-btn:hover{background:var(--baby)}
