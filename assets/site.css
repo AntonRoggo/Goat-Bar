@@ -74,6 +74,7 @@ section{padding-block:clamp(56px,7vw,88px)}
 .sizes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .sizes button{position:relative;border:1.5px solid var(--line);background:var(--paper-2);border-radius:8px;padding:12px 6px;font-size:14px;cursor:pointer}
 .sizes button[aria-pressed="true"]{border-color:var(--navy);background:var(--white);font-weight:700}
+.sizes .sub{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:3px}
 .sizes .tag{position:absolute;top:-9px;left:50%;transform:translateX(-50%);margin:0;white-space:nowrap}
 .sub-box{margin-top:16px;border:1.5px solid var(--navy);border-radius:10px;background:var(--white);overflow:hidden}
 .sub-box .row{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:14px 16px;cursor:pointer}

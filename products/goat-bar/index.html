@@ -67,20 +67,20 @@
 
       <div class="label">Choose flavor</div>
       <div class="flav">
-        <button aria-pressed="true" id="fl1"><img src="/assets/cookie-stack.jpg" alt=""><span>Chocolate Chip Cookie<br><span class="tag">Launch flavor</span></span></button>
+        <button aria-pressed="true" id="fl1"><img src="/assets/cookie-stack.jpg" alt=""><span>Chocolate Chip Cookie<br><span class="tag">Best seller</span></span></button>
         <button disabled id="fl2"><img src="/assets/label-front.jpg" alt="" style="filter:grayscale(1)"><span>Next flavor<br><span style="font-size:11px;color:var(--muted)">Coming soon</span></span></button>
       </div>
 
       <div class="label">Choose size</div>
       <div class="sizes" id="sizes">
-        <button aria-pressed="true" data-p="49" data-was="">12 bars</button>
-        <button aria-pressed="false" data-p="94" data-was="98"><span class="tag">Most popular</span>24 bars</button>
-        <button aria-pressed="false" data-p="184" data-was="196"><span class="tag">Best value</span>48 bars</button>
+        <button aria-pressed="true" data-p="49" data-was="">12 bars<span class="sub">1 box</span></button>
+        <button aria-pressed="false" data-p="94" data-was="98"><span class="tag">Most popular</span>24 bars<span class="sub">2 boxes · save $4</span></button>
+        <button aria-pressed="false" data-p="184" data-was="196"><span class="tag">Best value</span>48 bars<span class="sub">4 boxes · save $12</span></button>
       </div>
 
       <div class="sub-box">
         <label class="row" for="p-sub"><input type="radio" name="plan" id="p-sub" checked><span><b>Subscribe &amp; <span class="save">Save 10%</span></b><div class="every">Delivers every <select id="every" aria-label="Delivery frequency" style="font:inherit;border:0;background:transparent;text-decoration:underline;color:inherit"><option>15 days</option><option selected>30 days</option><option>45 days</option></select></div></span><span><span class="was" id="subWas">$49.00</span><span class="now" id="subNow">$44.10</span></span></label>
-        <ul><li>10% off your entire box, add-ons included</li><li>Unlock free gifts + extra savings</li><li>First access to new products &amp; flavors</li><li>Skip, swap, pause, or cancel anytime</li></ul>
+        <ul><li>10% off your entire box, add-ons included</li><li>First access to new products &amp; flavors</li><li>Skip, swap, pause, or cancel anytime</li></ul>
       </div>
       <label class="once" for="p-once"><input type="radio" name="plan" id="p-once"><span>Try once</span><span class="now" id="oncePrice">$49.00</span></label>
       <button class="btn cart" id="addBtn">Add to cart</button>

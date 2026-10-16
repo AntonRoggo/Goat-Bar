@@ -61,7 +61,7 @@
   <div class="gb-scrim" data-close hidden></div>
   <aside class="gb-drawer" aria-label="Your cart" aria-hidden="true">
     <div class="gb-dh"><h2>Your Cart <span class="gb-badge" data-cart-count>0</span></h2><button class="gb-x" data-close aria-label="Close cart">×</button></div>
-    <div class="gb-ship"><div class="gb-ship-t" id="gbShipT"></div><div class="gb-bar"><i id="gbShipBar"></i></div></div>
+    <div class="gb-ship"><div class="gb-ship-t" id="gbShipT"></div><div class="gb-bar-wrap"><div class="gb-bar"><i id="gbShipBar"></i></div><svg class="gb-truck" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1zM14 10h4l3 3v3h-7z"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></div></div>
     <div class="gb-items" id="gbItems"></div>
     <div class="gb-ups"><div class="gb-ups-h">You may also like</div>
       <div class="gb-ups-c"><img src="/assets/label-front.jpg" alt=""><div><b>Goat Bar (Next flavor)</b><span>Coming soon</span></div><button class="gb-mini" id="gbNotify">Notify me</button></div></div>

@@ -10,6 +10,9 @@
 .gb-dh h2{font-size:20px;display:flex;gap:10px;align-items:center}
 .gb-x{background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:var(--navy)}
 .gb-ship{padding:12px 20px;background:var(--baby);text-align:center;font-size:13px}
+.gb-bar-wrap{display:flex;align-items:center;gap:8px;margin-top:8px}
+.gb-bar-wrap .gb-bar{flex:1;margin-top:0}
+.gb-truck{flex:none;color:var(--navy)}
 .gb-bar{height:6px;background:rgba(19,41,75,.15);border-radius:3px;margin-top:8px;overflow:hidden}
 .gb-bar i{display:block;height:100%;background:var(--navy);transition:width .3s}
 .gb-items{flex:1;overflow-y:auto;padding:8px 20px}
