@@ -25,41 +25,231 @@
   <div class="r"><a href="/pages/our-story/">Learn ▾</a>
     <svg viewBox="0 0 24 24" aria-hidden="true" style="display:none"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
     <button class="cartbtn" data-opencart aria-label="Open cart"><svg viewBox="0 0 24 24"><path d="M3 4h3l2 12h11l2-8H7"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><span class="gb-badge" data-cart-count hidden>0</span></button></div>
-</div></header><main id="top">
-<section class="home-hero" style="padding:0">
-  <div class="l"><div class="eyebrow">The new</div><h1>Chocolate chip cookie</h1><div class="eyebrow">Protein bar</div>
-    <p>Rich, dense cookie dough with organic chocolate chips. 20g protein from grass-fed goat casein.</p>
-    <a class="btn baby" href="/products/goat-bar/">Try Goat Bar</a>
-    <div class="chips"><div><b>20g</b>protein</div><div><b>9</b>ingredients</div><div><b>0</b>synthetic</div></div></div>
-  <div class="r"><img src="/assets/g-01-hero.jpg" alt="Goat Bar floating over an alpine meadow"></div>
+</div></header><main id="top"><section class="gb-hh" style="padding:0">
+  <picture><source media="(max-width:700px)" srcset="/assets/home-hero-tall.jpg"><img src="/assets/home-hero-wide.jpg" alt="Friends at a meadow picnic below the mountains"></picture>
+  <div class="gb-hh-t"><h1>Stay fuller for longer.</h1><p>A real-food protein bar made from grass-fed goat casein.</p>
+  <a class="gb-hh-btn" href="#buy">Start your first box <span aria-hidden="true">&rarr;</span></a></div>
+</section><div id="buy"></div>
+<!-- 3 PDP -->
+<section class="pdp" id="buy">
+  <div class="wrap">
+    <div>
+      <div class="stage">
+        <img class="main" id="mainImg" src="/assets/g-01-hero.jpg" alt="Goat Bar floating over an alpine meadow">
+        <button class="arrow prev" id="prev" aria-label="Previous image"><svg viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button>
+        <button class="arrow next" id="next" aria-label="Next image"><svg viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></button>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+      <div class="trust"><svg class="ico"><use href="#i-goat"/></svg><div><b>Made with grass-fed goat casein</b><br>9 ingredients. 0 synthetic. <a href="#inside">See what's inside →</a></div></div>
+    </div>
+
+    <div class="buy">
+      
+      <h1>The Goat Bar</h1>
+      <p class="sub">Stay fuller for longer. 20g protein from grass-fed goat casein.</p>
+      <div class="pills" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="t-over">Overview</button>
+        <button role="tab" aria-selected="false" data-tab="t-nut">Nutrition</button>
+        <button role="tab" aria-selected="false" data-tab="t-ing">Ingredients</button>
+        <button role="tab" aria-selected="false" data-tab="t-faq">FAQs</button>
+      </div>
+      <div class="panel" id="t-over" role="tabpanel">
+        <ul class="checks">
+          <li>Rich, dense chocolate chip cookie dough with organic chocolate chips. Not chalky.</li>
+          <li>20g protein from grass-fed goat casein and collagen.</li>
+          <li>Easy on the gut. Stays with you, fuller for longer.</li>
+          <li>Sweetened with organic coconut nectar and raw honey. 0 synthetic ingredients.</li>
+        </ul>
+      </div>
+      <div class="panel" id="t-nut" role="tabpanel" hidden><table><tr><td>Protein</td><td>20g</td></tr><tr><td>Ingredients</td><td>9</td></tr><tr><td>Synthetic ingredients</td><td>0</td></tr></table><p style="margin:8px 0 0;font-size:13px">Full nutrition panel ships with the first batch.</p></div>
+      <div class="panel" id="t-ing" role="tabpanel" hidden>
+        <p style="margin:0;font-size:14px">Grass-Fed Goat Casein, 100% Grass-Fed Bovine Collagen, Colostrum, Organic Coconut Nectar, Organic Chocolate Chip (Organic Cocoa Liquor, Organic Coconut Sugar, Organic Cocoa Butter), 100% Grass-Fed Beef Tallow, Organic Raw Honey, Organic Vanilla Extract, Salt. <b>Contains: Milk.</b></p>
+      </div>
+      <div class="panel" id="t-faq" role="tabpanel" hidden>
+        <p style="margin:0;font-size:14px">Taste, dairy, sweeteners and storage are answered in the <a href="#faq">FAQ below</a>.</p>
+      </div>
+
+      <div class="label">Choose flavor</div>
+      <div class="flav">
+        <button aria-pressed="true" id="fl1"><img src="/assets/cookie-stack.jpg" alt=""><span>Chocolate Chip Cookie<br><span class="tag">Best seller</span></span></button>
+        <button disabled id="fl2"><img src="/assets/label-front.jpg" alt="" style="filter:grayscale(1)"><span>Next flavor<br><span style="font-size:11px;color:var(--muted)">Coming soon</span></span></button>
+      </div>
+
+      <div class="label">Choose size</div>
+      <div class="sizes" id="sizes">
+        <button aria-pressed="true" data-p="49" data-was="">12 bars<span class="sub">1 box</span></button>
+        <button aria-pressed="false" data-p="94" data-was="98"><span class="tag">Most popular</span>24 bars<span class="sub">2 boxes · save $4</span></button>
+        <button aria-pressed="false" data-p="184" data-was="196"><span class="tag">Best value</span>48 bars<span class="sub">4 boxes · save $12</span></button>
+      </div>
+
+      <div class="sub-box">
+        <label class="row" for="p-sub"><input type="radio" name="plan" id="p-sub" checked><span><b>Subscribe &amp; <span class="save">Save 10%</span></b><div class="every">Delivers every <select id="every" aria-label="Delivery frequency" style="font:inherit;border:0;background:transparent;text-decoration:underline;color:inherit"><option>15 days</option><option selected>30 days</option><option>45 days</option></select></div></span><span><span class="was" id="subWas">$49.00</span><span class="now" id="subNow">$44.10</span></span></label>
+        <ul><li>10% off your entire box, add-ons included</li><li>First access to new products &amp; flavors</li><li>Skip, swap, pause, or cancel anytime</li></ul>
+      </div>
+      <label class="once" for="p-once"><input type="radio" name="plan" id="p-once"><span>Try once</span><span class="now" id="oncePrice">$49.00</span></label>
+      <button class="btn cart" id="addBtn">Add to cart</button>
+      <div class="assure"><span>✓ 30-day money-back guarantee</span><span>✓ Free US shipping $99+</span></div>
+
+      <div class="first"><img src="/assets/r2-meadow-friends.jpg" alt="" style="object-position:30% 75%"><div><b>First taste</b><p>Watch real people taste the bar and see the texture before you buy.</p></div></div>
+    </div>
+  </div>
 </section>
-<div class="marquee" aria-hidden="true"><div class="row"><span>Grass-fed goat casein</span><span>Fuller for longer</span><span>20g protein</span><span>Easy on the gut</span><span>0 synthetic ingredients</span><span>No seed oils</span><span>9 ingredients</span><span>Grass-fed goat casein</span><span>Fuller for longer</span><span>20g protein</span><span>Easy on the gut</span><span>0 synthetic ingredients</span><span>No seed oils</span><span>9 ingredients</span></div></div>
-<section><div class="wrap">
-  <h2 class="h2 center">Shop bestsellers</h2>
-  <div class="grid-products">
-    <a class="pcard" href="/products/goat-bar/"><img src="/assets/g-01-hero.jpg" alt=""><b>The Goat Bar (Chocolate Chip Cookie)</b><span>$49.00 · from $44.10 with Subscribe &amp; Save</span></a>
-    <a class="pcard" href="/products/goat-bar/"><img src="/assets/g-02-claims.jpg" alt=""><b>The Goat Bar, 24 bars</b><span>$94.00 <s>$98.00</s></span></a>
-    <a class="pcard" href="/products/goat-bar/"><img src="/assets/g-04-flavors.jpg" alt=""><b>The Goat Bar, 48 bars</b><span>$184.00 <s>$196.00</s></span></a>
-    <div class="pcard soon"><img src="/assets/label-front.jpg" alt=""><b>Next flavor</b><span>Coming soon</span></div>
+
+<!-- 4 MARQUEE -->
+<div class="marquee" aria-hidden="true"><div class="row" id="marquee"></div></div>
+
+<!-- 5 FUEL -->
+<section class="fuel center">
+  <div class="wrap">
+    <h2 class="h2">Stay fuller for longer with protein from goats</h2>
+    <div class="badges">
+      <div><svg class="ico"><use href="#i-leaf"/></svg>Grass<br>fed</div>
+      <div><svg class="ico"><use href="#i-goat"/></svg>Goat<br>casein</div>
+      <div><svg class="ico"><use href="#i-twenty"/></svg>20g<br>protein</div>
+      <div><svg class="ico"><use href="#i-list"/></svg>9<br>ingredients</div>
+      <div><svg class="ico"><use href="#i-zero"/></svg>0<br>synthetic</div>
+      <div><svg class="ico"><use href="#i-drop"/></svg>No seed<br>oils</div>
+    </div>
+    <div class="cards">
+      <article><img src="/assets/r1-summit-flask.jpg" alt="Climbers celebrating on a summit, one biting a Goat Bar"><h3>Stay fuller for longer</h3><p>Goat casein keeps you going between meals, so one bar holds you to the top.</p></article>
+      <article><img src="/assets/cookie-stack.jpg" alt="Stacked chocolate chip cookie bars"><h3>Easy on the gut</h3><p>No gums, no sugar alcohols, no fiber syrups. Nine ingredients you can read.</p></article>
+      <article><img src="/assets/r3-ridge-climbers.jpg" alt="Climbers resting on a granite ridge, one eating a Goat Bar"><h3>Pack it anywhere</h3><p>Pack, pocket, glovebox, desk drawer.</p></article>
+    </div>
   </div>
-</div></section>
-<section class="strip"><div class="wrap"><h2>Subscribe &amp; save 10% on Goat Bar</h2><p>10% off every box, first access to new flavors. Skip, swap, pause or cancel anytime.</p><a class="btn baby" href="/products/goat-bar/">Start a subscription</a></div></section>
-<section><div class="wrap center">
-  <h2 class="h2">The Goat Bar difference</h2>
-  <div class="diff">
-    <div><svg class="ico"><use href="#i-goat"/></svg><h3>Protein from goats</h3><p>Grass-fed goat casein. Easy on digestion, keeps you fuller for longer.</p></div>
-    <div><svg class="ico"><use href="#i-list"/></svg><h3>9 ingredients</h3><p>Every one on the front of the page. Nothing synthetic.</p></div>
-    <div><svg class="ico"><use href="#i-drop"/></svg><h3>No seed oils</h3><p>100% grass-fed beef tallow is the only fat.</p></div>
-    <div><svg class="ico"><use href="#i-honey"/></svg><h3>Real-food sweet</h3><p>Organic coconut nectar and raw honey. Nothing artificial.</p></div>
+</section>
+
+<!-- 6 WHAT'S INSIDE -->
+<svg class="edge" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" id="edge1"></svg>
+<section class="dark inside" id="inside">
+  <div class="wrap center">
+    <h2 class="h2">What's inside your bar</h2>
+    <div class="grid">
+      <div><svg class="ico"><use href="#i-milk"/></svg><h3>Grass-fed goat casein</h3><p>The protein, and where the name comes from. Easy on digestion, keeps you fuller for longer.</p></div>
+      <div><svg class="ico"><use href="#i-cow"/></svg><h3>Grass-fed collagen</h3><p>100% grass-fed bovine collagen. The second protein in the bar.</p></div>
+      <div><svg class="ico"><use href="#i-flask"/></svg><h3>Colostrum</h3><p>Colostrum, the first milk.</p></div>
+      <div><svg class="ico"><use href="#i-honey"/></svg><h3>Raw honey &amp; organic coconut nectar</h3><p>The only two sweeteners. Organic raw honey and organic coconut nectar.</p></div>
+      <div><svg class="ico"><use href="#i-choc"/></svg><h3>Organic chocolate chips</h3><p>Organic cocoa liquor, organic coconut sugar and organic cocoa butter.</p></div>
+      <div><svg class="ico"><use href="#i-shield"/></svg><h3>100% grass-fed beef tallow</h3><p>The fat in the bar, used in place of seed oils.</p></div>
+    </div>
   </div>
-</div></section>
-<section class="land" style="padding:0"><img src="/assets/scene-wide.jpg" alt=""><div class="wrap"><div><img class="bar" src="/assets/label-front.jpg" alt="Goat Bar wrapper"></div><div class="t"><h2>Stay fuller for longer.<br>Protein from goats.</h2><a class="btn baby" href="/products/goat-bar/">Order now</a></div></div></section>
+</section>
+
+<!-- 7 WHAT PEOPLE ARE SAYING -->
+<section style="padding-inline:0">
+  <h2 class="h2 center wrap">What people are saying</h2>
+  <div class="reels">
+    <div class="reel"><img src="/assets/r1-summit-flask.jpg" alt=""><div class="p"><svg viewBox="0 0 12 12"><path d="M3 1l8 5-8 5z"/></svg></div></div>
+    <div class="reel"><img src="/assets/r2-meadow-friends.jpg" alt=""><div class="p"><svg viewBox="0 0 12 12"><path d="M3 1l8 5-8 5z"/></svg></div></div>
+    <div class="reel"><img src="/assets/r4-picnic.jpg" alt=""><div class="p"><svg viewBox="0 0 12 12"><path d="M3 1l8 5-8 5z"/></svg></div></div>
+    <div class="reel"><img src="/assets/r6-lake-rocks.jpg" alt="" style="object-position:85% 50%"><div class="p"><svg viewBox="0 0 12 12"><path d="M3 1l8 5-8 5z"/></svg></div></div>
+    <div class="reel"><img src="/assets/r5-goat-reader.jpg" alt=""><div class="p"><svg viewBox="0 0 12 12"><path d="M3 1l8 5-8 5z"/></svg></div></div>
+  </div>
+  <div class="dots"><span>←</span><i></i><i></i><i></i><i></i><i></i><i></i><span>→</span></div>
+  
+</section>
+
+<!-- 8 US VS THEM -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="h2 center">Us vs them</h2>
+    <div class="vs">
+      <div class="rows labels"><div></div><div>Protein sources</div><div>Total protein</div><div>Calories</div><div>Sweeteners</div><div>Binders / fillers</div><div>Seed oils</div><div>Synthetic ingredients</div><div>Ingredients</div><div>Fat source</div></div>
+      <div class="rows us"><div class="hd"><span class="wm" aria-label="Goat Bar"></span></div><div>Grass-fed goat casein + grass-fed collagen</div><div>20g</div><div>Panel with first batch</div><div>Organic coconut nectar + raw honey</div><div>None</div><div>None</div><div>0</div><div>9</div><div>100% grass-fed beef tallow</div></div>
+      <div class="rows them"><div class="hd">Other protein bars</div><div>Protein isolates, plant blends</div><div>Varies</div><div>Varies</div><div>Sugar alcohols, syrups, artificial sweeteners</div><div>Gums, fiber syrups, glycerin</div><div>Common</div><div>Common</div><div>Long lists</div><div>Seed oils</div></div>
+    </div>
+    <div class="vs-cta"><a class="btn" href="#buy">Shop now</a></div>
+  </div>
+</section>
+
+<!-- 9 FILM -->
+<section class="film" id="story">
+  <img src="/assets/scene-wide.jpg" alt="">
+  <div class="wrap">
+    <h2>Where Goat Bar comes from</h2>
+    <a href="/pages/our-story/">Read our story <svg width="34" height="12" viewBox="0 0 34 12"><path d="M0 6h32M27 1l5 5-5 5" fill="none" stroke="#CFE9FC" stroke-width="1.6"/></svg></a>
+  </div>
+</section>
+
+<!-- 10 NUTRITION -->
+<section class="nutri center">
+  <div class="wrap">
+    <h2 style="font-size:clamp(20px,2.4vw,28px)">Real food protein, packed for the climb</h2>
+    <div class="three">
+      <div><span class="circ"><svg class="ico"><use href="#i-goat"/></svg></span><h3>Protein that keeps you full</h3><p>20g protein from grass-fed goat casein and collagen. Stay fuller for longer.</p></div>
+      <div><span class="circ"><svg class="ico"><use href="#i-choc"/></svg></span><h3>Food-like taste &amp; texture</h3><p>Tastes indulgent because it is made with real ingredients. Rich, dense, not chalky, not too sweet.</p></div>
+      <div><span class="circ"><svg class="ico"><use href="#i-belly"/></svg></span><h3>Easy on the gut</h3><p>No sugar alcohols, gums or fiber syrups. 0 synthetic ingredients.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 WE'RE GOAT BAR (no founder) -->
+<section>
+  <div class="we">
+    <div class="por"><img src="/assets/r5-goat-reader.jpg" alt="A mountain goat next to a hiker" style="object-position:60% 30%"><span>The <b>goats</b></span></div>
+    <div class="txt center">
+      <h2 class="h2">We're Goat Bar. Protein from goats.</h2>
+      <p>Goat Bar is built around grass-fed goat casein, the protein from goat milk. It is easy on digestion and keeps you fuller for longer, so it is the whole idea, and it is in the name.</p>
+      
+      <a class="btn" href="/pages/our-story/">Read our story</a>
+    </div>
+    <div class="por"><img src="/assets/r4-picnic.jpg" alt="Picnic in an alpine meadow" style="object-position:50% 20%"><span>The <b>mountains</b></span></div>
+  </div>
+</section>
+
+<!-- 12 HARD WORK: alternating blocks -->
+<section class="hard">
+  <div class="wrap">
+    <div class="ribbon"><h2>Made for<small>▲ ▲ ▲</small>the climb</h2></div>
+    <div class="alt">
+      <div class="r"><div class="pic"><img src="/assets/r2-meadow-friends.jpg" alt="Friends resting on a mountain slope with a Goat Bar"></div><div><h3>Flavor first, simply done</h3><p>This is what a protein bar should taste like: rich, real and deeply satisfying. Soft chocolate chip cookie dough, organic chocolate chips, organic vanilla and raw honey. Sweet, but not too sweet, so it works midday or as dessert.</p></div></div>
+      <div class="r"><div class="pic"><img src="/assets/r4-picnic.jpg" alt="Goat Bar at a meadow picnic"></div><div><h3>Fuller for longer, easy on the gut</h3><p>Goat casein is easy on digestion and keeps you full between meals. No sugar alcohols, no gums, no fiber syrups. If you don't love it, we'll refund you. No questions asked.</p></div></div>
+      <div class="r"><div class="pic"><img src="/assets/cookie-stack.jpg" alt="Three chocolate chip cookie bars stacked"></div><div><h3>Nine ingredients, nothing synthetic</h3><p>Grass-fed goat casein, grass-fed collagen, colostrum, coconut nectar, organic chocolate chips, grass-fed beef tallow, raw honey, vanilla and salt. That is the whole list.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 LANDSCAPE CTA -->
+<section class="land">
+  <img src="/assets/scene-wide.jpg" alt="">
+  <div class="wrap">
+    <div><img class="bar" src="/assets/label-front.jpg" alt="Goat Bar wrapper"></div>
+    <div class="t"><h2>Stay fuller for longer.<br>Protein from goats.</h2><a class="btn baby" href="#buy">Order now</a></div>
+  </div>
+</section>
+
+<!-- 15 FAQ -->
+<section style="padding-top:0" id="faq">
+  <div class="wrap">
+    <h2 class="h2 center">Frequently asked questions</h2>
+    <div class="faq">
+      <details><summary>Why did Goat Bar choose goat casein as the protein?</summary><p>Goat casein is easy on digestion and keeps you fuller for longer. It is also where the name comes from.</p></details>
+      <details><summary>What does it taste like?</summary><p>Rich and food-like. Like real chocolate chip cookie dough, sweet but not overly sweet. A satisfying, dense texture, not chalky or powdery like typical protein bars.</p></details>
+      <details><summary>Will this upset my stomach?</summary><p>Goat Bar has no sugar alcohols, gums or fiber syrups, and it is built to be easy on the gut.</p></details>
+      <details><summary>Why does it cost more than other bars?</summary><p>Most bars are formulated to hit the lowest possible cost. Goat Bar is built on grass-fed goat casein, grass-fed collagen, real-food sweeteners and nothing synthetic. You are paying for the ingredients, not filler.</p></details>
+      <details><summary>Is this good for kids?</summary><p>It contains raw honey, which is not for babies under 1.</p></details>
+      <details><summary>Can I eat this if I'm sensitive to dairy?</summary><p>Goat Bar contains milk. Goat casein and colostrum come from milk.</p></details>
+      <details><summary>Why beef tallow?</summary><p>100% grass-fed beef tallow is the fat in the bar, used in place of seed oils.</p></details>
+      <details><summary>Why two sweeteners, raw honey and coconut nectar?</summary><p>They are the only sweeteners in the bar.</p></details>
+      
+      
+    </div>
+  </div>
+</section>
+
+<!-- 16 NEWSLETTER -->
 <section style="padding-inline:0"><h2 class="h2 center wrap">Out there with Goat Bar</h2>
-  <div class="reels"><div class="reel"><img src="/assets/r1-summit-flask.jpg" alt="Climbers on a summit with Goat Bar"></div><div class="reel"><img src="/assets/r2-meadow-friends.jpg" alt="Friends on a mountain slope with Goat Bar"></div><div class="reel"><img src="/assets/r4-picnic.jpg" alt="Meadow picnic with Goat Bar"></div><div class="reel"><img src="/assets/r3-ridge-climbers.jpg" alt="Climbers on a ridge with Goat Bar"></div><div class="reel"><img src="/assets/r5-goat-reader.jpg" alt="A mountain goat and a hiker with Goat Bar"></div><div class="reel"><img src="/assets/r6-lake-rocks.jpg" alt="Friends at a mountain lake with Goat Bar"></div></div></section>
-<section class="news"><svg class="edge" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" id="edge2"></svg>
-  <div class="in wrap"><div class="seal"><div style="text-align:center"><svg class="ico" style="width:46px;height:46px;stroke:#CFE9FC;margin:0 auto 10px"><use href="#i-goat"/></svg><span class="wm"></span><div style="font:700 9px var(--display);letter-spacing:.2em;color:#CFE9FC;margin-top:8px">FULLER FOR LONGER</div></div></div>
-  <div><h2>Join our newsletter</h2><p>New flavors, field reports and first access to drops.</p>
-  <form id="newsForm"><label for="email" style="position:absolute;left:-9999px">Email</label><input id="email" type="email" required placeholder="Email"><button class="btn" type="submit">Join free</button></form><p class="ok" id="newsOk" hidden>You're on the list.</p></div></div></section>
+  <div class="reels"><div class="reel"><img src="/assets/r1-summit-flask.jpg" alt="Climbers on a summit with Goat Bar"></div><div class="reel"><img src="/assets/r2-meadow-friends.jpg" alt="Friends on a mountain slope with Goat Bar"></div><div class="reel"><img src="/assets/r4-picnic.jpg" alt="Meadow picnic with Goat Bar"></div><div class="reel"><img src="/assets/r3-ridge-climbers.jpg" alt="Climbers on a ridge with Goat Bar"></div><div class="reel"><img src="/assets/r5-goat-reader.jpg" alt="A mountain goat and a hiker with Goat Bar"></div><div class="reel"><img src="/assets/r6-lake-rocks.jpg" alt="Friends at a mountain lake with Goat Bar"></div></div></section><section class="news">
+  <svg class="edge" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" id="edge2"></svg>
+  <div class="in wrap">
+    <div class="seal"><div style="text-align:center"><svg class="ico" style="width:46px;height:46px;stroke:#CFE9FC;margin:0 auto 10px"><use href="#i-goat"/></svg><span class="wm"></span><div style="font:700 9px var(--display);letter-spacing:.2em;color:#CFE9FC;margin-top:8px">FULLER FOR LONGER</div></div></div>
+    <div>
+      <h2>Join our newsletter</h2>
+      <p>New flavors, field reports and first access to drops.</p>
+      <form id="newsForm"><label for="email" style="position:absolute;left:-9999px">Email</label><input id="email" type="email" required placeholder="Email"><button class="btn" type="submit">Join free</button></form>
+      <p class="ok" id="newsOk" hidden>You're on the list.</p>
+    </div>
+  </div>
+</section>
 </main><footer class="dark"><div class="wrap">
   <div class="cols">
     <div><h3>Shop all</h3><ul><li><a href="/products/goat-bar/">The Goat Bar</a></li><li><a href="/products/goat-bar/">Chocolate Chip Cookie</a></li><li><a href="/collections/all/">Subscribe &amp; save</a></li></ul></div>
@@ -74,4 +264,20 @@ function edge(svg,fill){let d="M0 56 L0 40";let x=0,s=7;const r=()=>{s=(s*9301+4
  d+=" L1440 40 L1440 56 Z";svg.innerHTML=`<path d="${d}" fill="${fill}"/>`}
 
 document.querySelectorAll("svg.edge").forEach((s,i)=>edge(s,s.id==="edge2"?"#CFE9FC":"#13294B"));
-</script><script src="/assets/site.js"></script></body></html>
+</script><script src="/assets/site.js"></script><script>
+const G=[["g-01-hero","Goat Bar floating over an alpine meadow"],["g-02-claims","Open bar with the four claims"],["g-03-ingredients","Ingredients at a meadow picnic"],["g-04-flavors","Chocolate chip cookie bars stacked"],["g-06-trail","Friends on a summit"],["g-07-hero-ingredient","Grass-fed goat casein"],["g-08-review","Climbers on a ridge"]];
+let cur=0;const main=document.getElementById("mainImg"),th=document.getElementById("thumbs");
+const show=i=>{cur=(i+G.length)%G.length;main.src=`/assets/${G[cur][0]}.jpg`;main.alt=G[cur][1];[...th.children].forEach((b,k)=>b.setAttribute("aria-current",k===cur))};
+G.forEach(([f,a],i)=>{const b=document.createElement("button");b.setAttribute("aria-label",a);b.innerHTML=`<img src="/assets/${f}.jpg" alt="">`;b.onclick=()=>show(i);th.appendChild(b)});show(0);
+document.getElementById("prev").onclick=()=>show(cur-1);document.getElementById("next").onclick=()=>show(cur+1);
+document.querySelectorAll(".pills button").forEach(t=>t.onclick=()=>document.querySelectorAll(".pills button").forEach(x=>{x.setAttribute("aria-selected",x===t);document.getElementById(x.dataset.tab).hidden=x!==t}));
+const fmt=n=>"$"+n.toFixed(2);
+const price=t=>{const p=+t.dataset.p;document.getElementById("subNow").textContent=fmt(p*.9);document.getElementById("subWas").textContent=fmt(t.dataset.was?+t.dataset.was:p);document.getElementById("oncePrice").textContent=fmt(p)};
+document.querySelectorAll("#sizes button").forEach(t=>t.onclick=()=>{document.querySelectorAll("#sizes button").forEach(x=>x.setAttribute("aria-pressed",x===t));price(t)});
+document.getElementById("addBtn").onclick=()=>{const b=document.querySelector("#sizes button[aria-pressed=true]");const size=parseInt(b.textContent.match(/(12|24|48) bars/)[1]);gbAddToCart({size,plan:document.getElementById("p-sub").checked?"sub":"once",every:document.getElementById("every").value})};
+gbTrack("ViewContent",{value:49,currency:"USD",content_ids:["goat-bar-ccc-12"],content_type:"product",content_name:"Goat Bar (Chocolate Chip Cookie)"});
+const C=["Grass-fed goat casein","Fuller for longer","20g protein","Easy on the gut","0 synthetic ingredients","No seed oils","9 ingredients"];
+document.getElementById("marquee").innerHTML=[...C,...C].map(c=>`<span>${c}</span>`).join("");
+
+
+</script></body></html>
