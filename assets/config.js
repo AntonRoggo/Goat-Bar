@@ -3,9 +3,9 @@ window.GB_CONFIG = {
   // Meta Pixel ID (Events Manager > Data sources). Leave "" to disable.
   META_PIXEL_ID: "",
   // Klaviyo PUBLIC site key (6 characters, Settings > API keys) of the Goat Bar Klaviyo account.
-  KLAVIYO_PUBLIC_KEY: "",
+  KLAVIYO_PUBLIC_KEY: "S8uhri",
   // Klaviyo list ID for the waitlist (Lists & segments > list > settings).
-  KLAVIYO_LIST_ID: "",
+  KLAVIYO_LIST_ID: "VhmwAY",
   // Optional Google Analytics 4 measurement ID (G-XXXXXXX). Leave "" to disable.
   GA4_ID: "",
   CURRENCY: "USD",
