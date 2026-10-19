@@ -159,7 +159,7 @@
     const base = "https://a.klaviyo.com/client/";
     const q = "?company_id=" + encodeURIComponent(C.KLAVIYO_PUBLIC_KEY);
     const reqs = [fetch(base + "events/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "event", attributes: { properties: props, value: +t.value.toFixed(2), metric: { data: { type: "metric", attributes: { name: "Goat Bar Sold Out Checkout" } } }, profile: { data: { type: "profile", attributes: { email, ...(extra.profile || {}), properties: props } } } } } }) })];
-    if (consent && C.KLAVIYO_LIST_ID) reqs.push(fetch(base + "subscriptions/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "subscription", attributes: { custom_source: "Goat Bar sold-out popup", profile: { data: { type: "profile", attributes: { email, properties: props, subscriptions: { email: { marketing: { consent: "SUBSCRIBED" } } } } } } }, relationships: { list: { data: { type: "list", id: C.KLAVIYO_LIST_ID } } } } }) }));
+    if (consent && C.KLAVIYO_LIST_ID) reqs.push(fetch(base + "subscriptions/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "subscription", attributes: { custom_source: "Goat Bar sold-out popup", profile: { data: { type: "profile", attributes: { email, properties: props } } } }, relationships: { list: { data: { type: "list", id: C.KLAVIYO_LIST_ID } } } } }) }));
     const res = await Promise.all(reqs);
     if (res.some(r => !r.ok && r.status !== 202)) throw new Error("klaviyo " + res.map(r => r.status).join(","));
     return { ok: true };
