@@ -202,6 +202,7 @@
         newsStatus.textContent = "Thanks. Check your inbox for any confirmation email.";
         track("Lead", { content_name: "newsletter" });
       } catch (err) {
+        console.error("Goat Bar signup failed:", err.message);
         newsStatus.textContent = err.message === "signup_unavailable" ? signupPending : "That didn’t go through. Please try again.";
       } finally {
         newsStatus.hidden = false;
