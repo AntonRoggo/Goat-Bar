@@ -31,9 +31,9 @@
   const eid = () => "gb_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   function track(event, data = {}) {
     const id = eid();
-    const standard = ["PageView", "ViewContent", "AddToCart", "InitiateCheckout", "AddPaymentInfo", "Lead", "Purchase"];
+    const standard = ["PageView", "ViewContent", "AddToCart", "InitiateCheckout", "AddPaymentInfo", "Lead", "CompleteRegistration", "Purchase"];
     if (window.fbq) fbq(standard.includes(event) ? "track" : "trackCustom", event, data, { eventID: id });
-    if (window.gtag) gtag("event", { ViewContent: "view_item", AddToCart: "add_to_cart", InitiateCheckout: "begin_checkout", AddShippingInfo: "add_shipping_info", Lead: "generate_lead" }[event] || event, { value: data.value, currency: data.currency });
+    if (window.gtag) gtag("event", { ViewContent: "view_item", AddToCart: "add_to_cart", InitiateCheckout: "begin_checkout", AddShippingInfo: "add_shipping_info", Lead: "generate_lead", CompleteRegistration: "sign_up" }[event] || event, { value: data.value, currency: data.currency });
     (window.dataLayer = window.dataLayer || []).push({ event, ...data, event_id: id });
     const log = store.get("gb_events", []); log.push({ event, data, t: Date.now() }); store.set("gb_events", log.slice(-50));
   }
@@ -172,7 +172,7 @@
     try {
       await klaviyo(email, $("#gbOpt").checked);
       const t = totals();
-      track("Lead", { value: +t.value.toFixed(2), currency: C.CURRENCY, content_name: "Goat Bar waitlist" });
+      track("CompleteRegistration", { content_name: "Goat Bar waitlist" });
       store.set("gb_lead", { email, t: Date.now() });
       $("#gbForm").hidden = true; $("#gbDone").hidden = false;
     } catch (err) {
@@ -200,7 +200,7 @@
       try {
         await window.gbSubscribe(input.value.trim(), "newsletter");
         newsStatus.textContent = "Thanks. Check your inbox for any confirmation email.";
-        track("Lead", { content_name: "newsletter" });
+        track("CompleteRegistration", { content_name: "newsletter" });
       } catch (err) {
         console.error("Goat Bar signup failed:", err.message);
         newsStatus.textContent = err.message === "signup_unavailable" ? signupPending : "That didn’t go through. Please try again.";

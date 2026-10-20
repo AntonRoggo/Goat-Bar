@@ -1,7 +1,7 @@
 
 /* Layout: section-for-section copy of the Lineage PDP. Goat Bar skin: paper ground, navy dark bands, baby blue accent, Denali (Helvetica Bold) caps. Single deliberate light look. */
 :root{
-  --paper:#ECE5D6; --paper-2:#F3EEE4; --card:#E3DAC8; --navy:#13294B; --navy-2:#0C1D37; --baby:#CFE9FC; --baby-2:#9FCDF0; --rock:#8A6A4E; --ink:#13294B; --muted:#4A5A72; --white:#FFFFFF; --line:rgba(19,41,75,.16);
+  --paper:#FFFFFF; --paper-2:#F4F7FB; --card:#EAF0F7; --navy:#13294B; --navy-2:#0C1D37; --baby:#CFE9FC; --baby-2:#9FCDF0; --rock:#8A6A4E; --ink:#13294B; --muted:#4A5A72; --white:#FFFFFF; --line:rgba(19,41,75,.16);
   --display:"Helvetica Neue",Helvetica,Arimo,Arial,sans-serif;
   --body:"Helvetica Neue",Helvetica,Arimo,Arial,sans-serif;
   --max:1180px; --gut:clamp(16px,4vw,40px);
