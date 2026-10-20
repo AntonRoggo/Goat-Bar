@@ -97,5 +97,8 @@
 .co-sold .sum{margin-top:16px;background:var(--baby);border-radius:8px;padding:10px 12px;font-size:13px;text-align:left}
 .co-sold .nocharge{margin-top:12px;background:var(--navy);color:var(--baby);border-radius:8px;padding:10px 12px;font-weight:700;font-size:14px}
 .co-sold .fine{font-size:12px;color:var(--muted);margin-top:18px}
-.co-sold .co-btn{margin-top:20px}
+.co-sold .notify{display:grid;gap:10px;margin-top:16px;text-align:left}
+.co-sold .notify label{font:700 12px var(--display);letter-spacing:.1em;text-transform:uppercase}
+.co-sold .notify input{font:inherit;font-size:16px;padding:14px;border:1.5px solid var(--navy);border-radius:8px;background:var(--white);color:var(--ink)}
+.co-sold .notify .co-btn{width:100%;margin-top:4px}
 .co-err{justify-self:start;text-align:left}

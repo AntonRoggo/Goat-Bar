@@ -47,9 +47,8 @@
   // ---------- form state ----------
   const saved = ss.get();
   FIELDS.forEach(f => { if (saved[f]) $("#co-" + f).value = saved[f]; });
-  if (saved.optin === false) $("#co-optin").checked = false;
   const val = f => $("#co-" + f).value.trim();
-  const persist = () => { const v = {}; FIELDS.forEach(f => v[f] = val(f)); v.optin = $("#co-optin").checked; ss.set(v); };
+  const persist = () => { const v = {}; FIELDS.forEach(f => v[f] = val(f)); ss.set(v); };
   $("#coInfo").addEventListener("input", persist);
 
   const rules = {
@@ -116,24 +115,25 @@
 
   // ---------- continue to payment = sold out ----------
   const phoneE164 = p => { const d = p.replace(/\D/g, ""); return d.length === 10 ? "+1" + d : d.length === 11 && d[0] === "1" ? "+" + d : ""; };
-  async function capture(consent) {
+  // Checkout details go to Klaviyo as an event on "Continue to payment" (no list subscription).
+  // The list subscription (which triggers the "Welcome to the Herd" flow) only happens when they click "Notify me".
+  async function capture(consent, email) {
     const o = shipOpt(), total = t.value + shipPrice(o);
     const profile = { first_name: val("first"), last_name: val("last"), location: { address1: val("address1"), address2: val("address2"), city: val("city"), region: val("state"), zip: val("zip"), country: "United States" } };
     if (phoneE164(val("phone"))) profile.phone_number = phoneE164(val("phone"));
-    const props = { gb_step: "continue_to_payment", gb_shipping_method: o.name, gb_shipping_price: shipPrice(o), gb_checkout_total: +total.toFixed(2), gb_discount_code: discount, gb_phone: val("phone") };
-    return window.gbSubscribe(val("email"), "checkout", consent, { profile, props });
+    const props = { gb_step: consent ? "notify_me" : "continue_to_payment", gb_shipping_method: o.name, gb_shipping_price: shipPrice(o), gb_checkout_total: +total.toFixed(2), gb_discount_code: discount, gb_phone: val("phone") };
+    return window.gbSubscribe(email || val("email"), "checkout", consent, { profile, props });
   }
-  function soldOut(state) {
+  function soldOut(state, email) {
     $("#coSoldSum").innerHTML = `Your order: ${cart.map(i => `${i.qty} × ${i.size} bars (${i.plan === "sub" ? "subscribe, every " + i.every : "one-time"})`).join(", ")} · <b>${money(t.value)}</b><br>Ship to: ${val("first")} ${val("last")}, ${val("city")}, ${val("state")}`;
     $("#coSoldP").textContent = {
-      saved: "Check your inbox at " + val("email") + " and confirm your email. Once confirmed, we'll email you the moment Goat Bar is live. You won't be charged.",
-      noconsent: "Want an email the moment Goat Bar is live? You won't be charged.",
+      ask: "Want to know the moment Goat Bar is back? Tap below and we'll email you. You won't be charged.",
+      saved: "You're on the list. Check your inbox at " + email + " and confirm your email. We'll tell you the moment Goat Bar is back. You won't be charged.",
       unavailable: "Email signup isn't connected yet, so we can't notify you. Please check back soon.",
       error: "We couldn't save your email. Check your connection and try again."
     }[state];
-    $("#coSoldRetry").hidden = !(state === "noconsent" || state === "error");
-    $("#coSoldRetry").textContent = state === "noconsent" ? "Email me when it's back" : "Try again";
-    $("#coSold").hidden = false; $("#coSoldH").focus();
+    $("#coNotify").hidden = state === "saved" || state === "unavailable";
+    $("#coSold").hidden = false;
   }
   $("#coShip").addEventListener("submit", async e => {
     e.preventDefault();
@@ -141,21 +141,26 @@
     const o = shipOpt(), total = +(t.value + shipPrice(o)).toFixed(2);
     if (window.fbq && C.META_PIXEL_ID) fbq("init", C.META_PIXEL_ID, { em: val("email").toLowerCase(), fn: val("first").toLowerCase(), ln: val("last").toLowerCase(), ph: val("phone").replace(/\D/g, ""), ct: val("city").toLowerCase().replace(/\s/g, ""), st: val("state").toLowerCase(), zp: val("zip").slice(0, 5), country: "us" });
     window.gbTrack("Lead", ev({ value: total, content_name: "Goat Bar sold-out checkout", shipping_method: o.id }));
-    const consent = $("#co-optin").checked;
-    let state = consent ? "saved" : "noconsent";
-    try { await capture(consent); }
-    catch (err) { state = err.message === "signup_unavailable" ? "unavailable" : "error"; }
-    try { localStorage.setItem("gb_lead", JSON.stringify({ email: val("email"), t: Date.now(), source: "checkout" })); } catch {}
+    try { await capture(false); } catch {}
     btn.disabled = false; btn.textContent = "Continue to payment";
-    soldOut(state);
+    $("#coNotifyEmail").value = val("email"); $("#coNotifyErr").hidden = true;
+    soldOut("ask");
+    $("#coNotifyBtn").focus();
   });
-  $("#coSoldRetry").onclick = async () => {
-    const b = $("#coSoldRetry"); b.disabled = true;
-    try { await capture(true); $("#co-optin").checked = true; soldOut("saved"); }
-    catch (err) { soldOut(err.message === "signup_unavailable" ? "unavailable" : "error"); }
-    finally { b.disabled = false; }
-  };
-  $("#coSold").addEventListener("keydown", e => { if (e.key === "Tab") { e.preventDefault(); const f = [...$("#coSold").querySelectorAll("a[href],button")].filter(x => !x.hidden); const i = f.indexOf(document.activeElement); f[(i + (e.shiftKey ? f.length - 1 : 1)) % f.length].focus(); } });
+  $("#coNotify").addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = $("#coNotifyEmail").value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { $("#coNotifyErr").textContent = "Enter a valid email address."; $("#coNotifyErr").hidden = false; return; }
+    const b = $("#coNotifyBtn"); b.disabled = true; b.textContent = "Saving…";
+    try {
+      await capture(true, email);
+      window.gbTrack("CompleteRegistration", { content_name: "Notify me: back in stock" });
+      try { localStorage.setItem("gb_lead", JSON.stringify({ email, t: Date.now(), source: "checkout_notify" })); } catch {}
+      soldOut("saved", email);
+    } catch (err) { soldOut(err.message === "signup_unavailable" ? "unavailable" : "error"); }
+    finally { b.disabled = false; b.textContent = "Notify me when we're back in stock"; }
+  });
+  $("#coSold").addEventListener("keydown", e => { if (e.key === "Tab") { e.preventDefault(); const f = [...$("#coSold").querySelectorAll("a[href],button,input")].filter(x => !x.closest("[hidden]") && !x.hidden); const i = f.indexOf(document.activeElement); f[(i + (e.shiftKey ? f.length - 1 : 1)) % f.length].focus(); } });
 
   // ---------- mobile summary toggle ----------
   $("#coToggle").onclick = () => { const side = $("#coSide"), open = side.classList.toggle("open"); $("#coToggle").setAttribute("aria-expanded", open); $("#coToggleT").textContent = open ? "Hide order summary ▴" : "Show order summary ▾"; };
