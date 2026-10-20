@@ -1,7 +1,7 @@
 // Goat Bar smoke test: fill these in, then redeploy.
 window.GB_CONFIG = {
   // Meta Pixel ID (Events Manager > Data sources). Leave "" to disable.
-  META_PIXEL_ID: "",
+  META_PIXEL_ID: "2564065604113069",
   // Klaviyo PUBLIC site key (6 characters, Settings > API keys) of the Goat Bar Klaviyo account.
   KLAVIYO_PUBLIC_KEY: "S8uhri",
   // Klaviyo list ID for the waitlist (Lists & segments > list > settings).
