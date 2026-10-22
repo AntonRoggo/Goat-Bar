@@ -40,7 +40,7 @@
 <main class="co-main" id="top"><div class="co-in">
   <a href="/" class="co-logo" aria-label="Goat Bar home"><span class="wm"></span></a>
   <ol class="co-crumbs"><li><a href="#" data-opencart>Cart</a></li><li data-step="info">Information</li><li data-step="ship">Shipping</li><li>Payment</li></ol>
-  <form id="coInfo" novalidate>
+  <form id="coInfo" novalidate data-clarity-mask="True">
     <h2>Contact</h2>
     <div class="co-grid"><div class="full"><label class="co-f"><span>Email</span><input id="co-email" type="email" autocomplete="email" placeholder=" " ></label></div></div>
     <h2>Delivery</h2>
@@ -58,7 +58,7 @@
     <div class="co-grid" style="margin-top:12px"><div class="full"><label class="co-f"><span>Phone (optional)</span><input id="co-phone" type="tel" autocomplete="tel" placeholder=" " ></label></div></div>
     <div class="co-actions"><a href="#" data-opencart>‹ Return to cart</a><button class="co-btn" type="submit">Continue to shipping</button></div>
   </form>
-  <form id="coShip" novalidate hidden>
+  <form id="coShip" novalidate hidden data-clarity-mask="True">
     <div class="co-review">
       <div><span>Contact</span><b id="coRvEmail"></b><button class="co-link" type="button" data-goinfo="email">Change</button></div>
       <div><span>Ship to</span><b id="coRvAddr"></b><button class="co-link" type="button" data-goinfo="address1">Change</button></div>
@@ -72,7 +72,7 @@
   <p class="co-note"><a href="/pages/privacy/">Privacy policy</a> · <a href="/pages/terms/">Terms of service</a></p>
 </div></main>
 </div>
-<div class="co-sold" id="coSold" role="dialog" aria-modal="true" aria-labelledby="coSoldH" hidden><div class="card">
+<div class="co-sold" id="coSold" data-clarity-mask="True" role="dialog" aria-modal="true" aria-labelledby="coSoldH" hidden><div class="card">
   <div class="gb-tag">Sold out</div>
   <h2 id="coSoldH" tabindex="-1">Sold out. You haven't been charged.</h2>
   <p id="coSoldP"></p>

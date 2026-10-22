@@ -8,6 +8,8 @@ window.GB_CONFIG = {
   KLAVIYO_LIST_ID: "VhmwAY",
   // Optional Google Analytics 4 measurement ID (G-XXXXXXX). Leave "" to disable.
   GA4_ID: "",
+  // Microsoft Clarity project ID (clarity.microsoft.com > project > Settings > Setup). Session recordings + heatmaps. Leave "" to disable.
+  CLARITY_ID: "z1vwbw3xaa",
   CURRENCY: "USD",
   FREE_SHIPPING_AT: 99,
   // Prices (copied from Lineage as placeholders). Subscribe & Save takes 10% off.

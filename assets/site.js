@@ -28,6 +28,13 @@
     const s = document.createElement("script"); s.async = true; s.src = "https://www.googletagmanager.com/gtag/js?id=" + C.GA4_ID; document.head.appendChild(s);
     window.dataLayer = window.dataLayer || []; window.gtag = function () { dataLayer.push(arguments); }; gtag("js", new Date()); gtag("config", C.GA4_ID);
   }
+  if (C.CLARITY_ID) {
+    (function (c, l, a, r, i, t, y) { c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) }; t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i; y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y); })(window, document, "clarity", "script", C.CLARITY_ID);
+    // Tag each recording with where the visitor came from, so recordings can be filtered by ad.
+    const src = attr.fbclid || /^(fb|facebook|ig|instagram|meta)/i.test(attr.utm_source || "") ? "meta_ad" : (attr.utm_source || (attr.referrer === "direct" ? "direct" : "referral"));
+    clarity("set", "traffic", src);
+    ["utm_source", "utm_campaign", "utm_content", "first_landing"].forEach(k => { if (attr[k]) clarity("set", k, String(attr[k])); });
+  }
   const eid = () => "gb_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
   function track(event, data = {}) {
     const id = eid();
@@ -35,6 +42,7 @@
     if (window.fbq) fbq(standard.includes(event) ? "track" : "trackCustom", event, data, { eventID: id });
     if (window.gtag) gtag("event", { ViewContent: "view_item", AddToCart: "add_to_cart", InitiateCheckout: "begin_checkout", AddShippingInfo: "add_shipping_info", Lead: "generate_lead", CompleteRegistration: "sign_up" }[event] || event, { value: data.value, currency: data.currency });
     (window.dataLayer = window.dataLayer || []).push({ event, ...data, event_id: id });
+    if (window.clarity) clarity("event", event);
     const log = store.get("gb_events", []); log.push({ event, data, t: Date.now() }); store.set("gb_events", log.slice(-50));
   }
   window.gbTrack = track;
