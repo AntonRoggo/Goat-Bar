@@ -166,8 +166,11 @@
     const H = { "Content-Type": "application/vnd.api+json", revision: "2024-10-15" };
     const base = "https://a.klaviyo.com/client/";
     const q = "?company_id=" + encodeURIComponent(C.KLAVIYO_PUBLIC_KEY);
-    const reqs = [fetch(base + "events/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "event", attributes: { properties: props, value: +t.value.toFixed(2), metric: { data: { type: "metric", attributes: { name: "Goat Bar Sold Out Checkout" } } }, profile: { data: { type: "profile", attributes: { email, ...(extra.profile || {}), properties: props } } } } } }) })];
-    if (consent && C.KLAVIYO_LIST_ID) reqs.push(fetch(base + "subscriptions/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "subscription", attributes: { custom_source: "Goat Bar sold-out popup", profile: { data: { type: "profile", attributes: { email, properties: props } } } }, relationships: { list: { data: { type: "list", id: C.KLAVIYO_LIST_ID } } } } }) }));
+    // Website newsletter signups go to their own list and event; everything else is the sold-out waitlist.
+    const news = modal.dataset.source === "newsletter";
+    const listId = news ? C.KLAVIYO_NEWSLETTER_LIST_ID : C.KLAVIYO_LIST_ID;
+    const reqs = [fetch(base + "events/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "event", attributes: { properties: props, value: +t.value.toFixed(2), metric: { data: { type: "metric", attributes: { name: news ? "Goat Bar Newsletter Signup" : "Goat Bar Sold Out Checkout" } } }, profile: { data: { type: "profile", attributes: { email, ...(extra.profile || {}), properties: props } } } } } }) })];
+    if (consent && listId) reqs.push(fetch(base + "subscriptions/" + q, { method: "POST", headers: H, body: JSON.stringify({ data: { type: "subscription", attributes: { custom_source: news ? "Goat Bar website newsletter" : "Goat Bar sold-out popup", profile: { data: { type: "profile", attributes: { email, properties: props } } } }, relationships: { list: { data: { type: "list", id: listId } } } } }) }));
     const res = await Promise.all(reqs);
     if (res.some(r => !r.ok && r.status !== 202)) throw new Error("klaviyo " + res.map(r => r.status).join(","));
     return { ok: true };
@@ -191,6 +194,25 @@
   window.gbSubscribe = (email, source, consent = true, extra) => { modal.dataset.source = source; return klaviyo(email, consent, extra); };
   window.gbSignupReady = signupReady;
   window.gbState = () => ({ cart: cart.map(i => ({ ...i, unit: unit(i), full: fullUnit(i) })), totals: totals(), attr });
+  // Double opt-in reminder shown right after a newsletter signup.
+  function confirmPopup(email) {
+    let el = document.getElementById("gbConfirm");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "gbConfirm"; el.className = "gb-confirm"; el.setAttribute("data-clarity-mask", "True");
+      el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-labelledby", "gbConfirmH");
+      el.innerHTML = `<div class="card"><p class="eyebrow">One more step</p><h2 id="gbConfirmH">Check your inbox</h2>
+        <ol><li><b>Check your inbox</b> at <span class="em"></span>.</li><li><b>Not there?</b> Check your spam or promotions folder.</li><li><b>Open our email</b> and tap the button to confirm your subscription.</li></ol>
+        <p class="note">You're not on the list until you confirm.</p><button type="button" class="gb-checkout">Got it</button></div>`;
+      document.body.appendChild(el);
+      const close = () => { el.hidden = true; };
+      el.querySelector("button").onclick = close;
+      el.addEventListener("click", e => { if (e.target === el) close(); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+    }
+    el.querySelector(".em").textContent = email;
+    el.hidden = false; el.querySelector("button").focus();
+  }
   // Shared newsletter handler: success only follows a confirmed service response.
   const newsForm = $("#newsForm"), newsStatus = $("#newsOk");
   if (newsForm && newsStatus) {
@@ -199,6 +221,7 @@
     newsStatus.setAttribute("aria-live", "polite");
     input.setAttribute("aria-describedby", "newsOk");
     if (!signupReady) { newsStatus.textContent = signupPending; newsStatus.hidden = false; }
+    let sent = false;
     newsForm.addEventListener("submit", async e => {
       e.preventDefault();
       if (!newsForm.reportValidity()) return;
@@ -206,16 +229,19 @@
       button.disabled = true;
       button.textContent = "Saving…";
       try {
-        await window.gbSubscribe(input.value.trim(), "newsletter");
-        newsStatus.textContent = "Thanks. Check your inbox for any confirmation email.";
+        const email = input.value.trim();
+        await window.gbSubscribe(email, "newsletter");
+        newsStatus.textContent = "Almost there. Check your inbox (and spam) and confirm your subscription.";
         track("CompleteRegistration", { content_name: "newsletter" });
+        input.value = ""; input.disabled = true; sent = true;
+        confirmPopup(email);
       } catch (err) {
         console.error("Goat Bar signup failed:", err.message);
         newsStatus.textContent = err.message === "signup_unavailable" ? signupPending : "That didn’t go through. Please try again.";
       } finally {
         newsStatus.hidden = false;
-        button.disabled = false;
-        button.textContent = label;
+        button.disabled = sent;
+        button.textContent = sent ? "Check your inbox" : label;
       }
     });
   }

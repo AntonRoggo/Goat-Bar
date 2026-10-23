@@ -6,6 +6,8 @@ window.GB_CONFIG = {
   KLAVIYO_PUBLIC_KEY: "S8uhri",
   // Klaviyo list ID for the waitlist (Lists & segments > list > settings).
   KLAVIYO_LIST_ID: "VhmwAY",
+  // Klaviyo list for website newsletter signups ("Join free"). The waitlist above is only for "Notify me" at the sold-out checkout.
+  KLAVIYO_NEWSLETTER_LIST_ID: "ReYG9u",
   // Optional Google Analytics 4 measurement ID (G-XXXXXXX). Leave "" to disable.
   GA4_ID: "",
   // Microsoft Clarity project ID (clarity.microsoft.com > project > Settings > Setup). Session recordings + heatmaps. Leave "" to disable.

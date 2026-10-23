@@ -128,7 +128,7 @@
     $("#coSoldSum").innerHTML = `Your order: ${cart.map(i => `${i.qty} × ${i.size} bars (${i.plan === "sub" ? "subscribe, every " + i.every : "one-time"})`).join(", ")} · <b>${money(t.value)}</b><br>Ship to: ${val("first")} ${val("last")}, ${val("city")}, ${val("state")}`;
     $("#coSoldP").textContent = {
       ask: "Want to know the moment Goat Bar is back? Tap below and we'll email you.",
-      saved: "You're on the list. Check your inbox at " + email + " and confirm your email. We'll tell you the moment Goat Bar is back. You won't be charged.",
+      saved: "Almost there. Check your inbox at " + email + " (and your spam folder) and tap the button to confirm your email. We'll tell you the moment Goat Bar is back. You won't be charged.",
       unavailable: "Email signup isn't connected yet, so we can't notify you. Please check back soon.",
       error: "We couldn't save your email. Check your connection and try again."
     }[state];
