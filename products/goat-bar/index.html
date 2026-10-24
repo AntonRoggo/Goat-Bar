@@ -57,7 +57,18 @@
           <li>Sweetened with organic coconut nectar and raw honey. 0 synthetic ingredients.</li>
         </ul>
       </div>
-      <div class="panel" id="t-nut" role="tabpanel" hidden><table><tr><td>Protein</td><td>20g</td></tr><tr><td>Ingredients</td><td>9</td></tr><tr><td>Synthetic ingredients</td><td>0</td></tr></table><p style="margin:8px 0 0;font-size:13px">Full nutrition panel ships with the first batch.</p></div>
+      <div class="panel" id="t-nut" role="tabpanel" hidden>
+        <table>
+          <tr><td>Serving size</td><td>1 bar (53g)</td></tr>
+          <tr><td>Calories</td><td>220</td></tr>
+          <tr><td>Total fat / sat. fat</td><td>10g / 2.5g</td></tr>
+          <tr><td>Cholesterol / sodium</td><td>35mg / 300mg</td></tr>
+          <tr><td>Total carbs / fiber</td><td>18g / 1g</td></tr>
+          <tr><td>Total sugars (added)</td><td>15g (14g)</td></tr>
+          <tr><td>Protein</td><td>20g</td></tr>
+        </table>
+        <img src="/assets/g-09-nutrition.jpg" alt="Goat Bar nutrition facts" style="width:100%;max-width:340px;display:block;margin:12px 0 0;border-radius:8px">
+      </div>
       <div class="panel" id="t-ing" role="tabpanel" hidden>
         <p style="margin:0;font-size:14px">Grass-Fed Goat Casein, 100% Grass-Fed Bovine Collagen, Colostrum, Organic Coconut Nectar, Organic Chocolate Chip (Organic Cocoa Liquor, Organic Coconut Sugar, Organic Cocoa Butter), 100% Grass-Fed Beef Tallow, Organic Raw Honey, Organic Vanilla Extract, Salt. <b>Contains: Milk.</b></p>
       </div>
@@ -83,6 +94,8 @@
     </div>
   </div>
 </section>
+
+<div class="stick" id="stick" aria-hidden="true"><b>The Goat Bar</b><button class="btn" type="button" tabindex="-1">Add to order</button></div>
 
 <!-- 4 MARQUEE -->
 <div class="marquee" aria-hidden="true"><div class="row" id="marquee"></div></div>
@@ -152,7 +165,7 @@
     <h2 class="h2 center">Us vs them</h2>
     <div class="vs">
       <div class="rows labels"><div></div><div>Protein sources</div><div>Total protein</div><div>Calories</div><div>Sweeteners</div><div>Binders / fillers</div><div>Seed oils</div><div>Synthetic ingredients</div><div>Ingredients</div><div>Fat source</div></div>
-      <div class="rows us"><div class="hd"><span class="wm" aria-label="Goat Bar"></span></div><div>Grass-fed goat casein + grass-fed collagen</div><div>20g</div><div>Panel with first batch</div><div>Organic coconut nectar + raw honey</div><div>None</div><div>None</div><div>0</div><div>9</div><div>100% grass-fed beef tallow</div></div>
+      <div class="rows us"><div class="hd"><span class="wm" aria-label="Goat Bar"></span></div><div>Grass-fed goat casein + grass-fed collagen</div><div>20g</div><div>220</div><div>Organic coconut nectar + raw honey</div><div>None</div><div>None</div><div>0</div><div>9</div><div>100% grass-fed beef tallow</div></div>
       <div class="rows them"><div class="hd">Other protein bars</div><div>Protein isolates, plant blends</div><div>Varies</div><div>Varies</div><div>Sugar alcohols, syrups, artificial sweeteners</div><div>Gums, fiber syrups, glycerin</div><div>Common</div><div>Common</div><div>Long lists</div><div>Seed oils</div></div>
     </div>
     <div class="vs-cta"><a class="btn" href="#buy">Shop now</a></div>
@@ -240,7 +253,7 @@
 <section class="news">
   <svg class="edge" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" id="edge2"></svg>
   <div class="in wrap">
-    <div class="seal"><div style="text-align:center"><svg class="ico" style="width:46px;height:46px;stroke:#CFE9FC;margin:0 auto 10px"><use href="#i-goat"/></svg><span class="wm"></span><div style="font:700 9px var(--display);letter-spacing:.2em;color:#CFE9FC;margin-top:8px">EASY ON YOUR STOMACH</div></div></div>
+    <div class="seal"><div style="text-align:center"><svg class="ico" style="width:46px;height:46px;stroke:#CFE9FC;margin:0 auto 10px"><use href="#i-goat"/></svg><span class="wm"></span><div style="font:700 9px var(--display);letter-spacing:.2em;color:#CFE9FC;margin-top:8px">EASY ON DIGESTION</div></div></div>
     <div>
       <h2>Join our newsletter</h2>
       <p>New flavors, field reports and first access to drops.</p>
@@ -264,13 +277,14 @@ function edge(svg,fill){let d="M0 56 L0 40";let x=0,s=7;const r=()=>{s=(s*9301+4
 
 document.querySelectorAll("svg.edge").forEach((s,i)=>edge(s,s.id==="edge2"?"#CFE9FC":"#13294B"));
 </script><script src="/assets/site.js"></script><script>document.querySelectorAll('svg.edge').length;</script><script>
-const G=[["g-01-hero","Goat Bar floating over an alpine meadow"],["g-02-claims","Open bar with the four claims"],["g-03-ingredients","Ingredients at a meadow picnic"],["g-04-flavors","Chocolate chip cookie bars stacked"],["g-06-trail","Friends on a summit"],["g-07-hero-ingredient","Grass-fed goat casein"],["g-08-review","Climbers on a ridge"]];
+const G=[["g-01-hero","Goat Bar floating over an alpine meadow"],["g-02-claims","Open bar with the four claims"],["g-03-ingredients","Ingredients at a meadow picnic"],["g-04-flavors","Chocolate chip cookie bars stacked"],["g-05-vs","Goat Bar vs most bars"],["g-06-trail","Friends on a summit"],["g-07-hero-ingredient","Grass-fed goat casein"],["g-08-review","Climbers on a ridge"],["g-09-nutrition","Label and nutrition facts"]];
 let cur=0;const main=document.getElementById("mainImg"),th=document.getElementById("thumbs");
 const show=i=>{cur=(i+G.length)%G.length;main.src=`/assets/${G[cur][0]}.jpg`;main.alt=G[cur][1];[...th.children].forEach((b,k)=>b.setAttribute("aria-current",k===cur))};
 G.forEach(([f,a],i)=>{const b=document.createElement("button");b.setAttribute("aria-label",a);b.innerHTML=`<img src="/assets/${f}.jpg" alt="">`;b.onclick=()=>show(i);th.appendChild(b)});show(0);
 document.getElementById("prev").onclick=()=>show(cur-1);document.getElementById("next").onclick=()=>show(cur+1);
 {let x0=null;const st=document.querySelector(".stage");st.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});st.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));x0=null})}
 document.addEventListener("click",e=>{const l=e.target.closest('a[href^="#"]');if(!l)return;const id=l.getAttribute("href").slice(1);const t=id&&document.getElementById(id);if(!t)return;e.preventDefault();t.scrollIntoView({block:"start"});history.replaceState(null,"","#"+id)});
+{const st=document.getElementById("stick"),ab=document.getElementById("addBtn");if(st&&ab&&"IntersectionObserver"in window){new IntersectionObserver(([e])=>{st.classList.toggle("show",!e.isIntersecting&&e.boundingClientRect.top<0)}).observe(ab);st.querySelector("button").onclick=()=>ab.click()}}
 document.querySelectorAll(".pills button").forEach(t=>t.onclick=()=>document.querySelectorAll(".pills button").forEach(x=>{x.setAttribute("aria-selected",x===t);document.getElementById(x.dataset.tab).hidden=x!==t}));
 const fmt=n=>"$"+n.toFixed(2);
 const price=t=>{const p=+t.dataset.p;document.getElementById("subNow").textContent=fmt(p*.9);document.getElementById("subWas").textContent=fmt(t.dataset.was?+t.dataset.was:p);document.getElementById("oncePrice").textContent=fmt(p)};
