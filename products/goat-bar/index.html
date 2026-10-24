@@ -253,7 +253,7 @@
 <section class="news">
   <svg class="edge" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true" id="edge2"></svg>
   <div class="in wrap">
-    <div class="seal"><div style="text-align:center"><svg class="ico" style="width:46px;height:46px;stroke:#CFE9FC;margin:0 auto 10px"><use href="#i-goat"/></svg><span class="wm"></span><div style="font:700 9px var(--display);letter-spacing:.2em;color:#CFE9FC;margin-top:8px">EASY ON DIGESTION</div></div></div>
+    <div class="seal"><div style="text-align:center"><svg class="ico" style="width:46px;height:46px;stroke:#CFE9FC;margin:0 auto 10px"><use href="#i-goat"/></svg><span class="wm"></span><div style="font:700 11px var(--display);letter-spacing:.2em;color:#CFE9FC;margin-top:8px">EASY ON DIGESTION</div></div></div>
     <div>
       <h2>Join our newsletter</h2>
       <p>New flavors, field reports and first access to drops.</p>
@@ -284,7 +284,7 @@ G.forEach(([f,a],i)=>{const b=document.createElement("button");b.setAttribute("a
 document.getElementById("prev").onclick=()=>show(cur-1);document.getElementById("next").onclick=()=>show(cur+1);
 {let x0=null;const st=document.querySelector(".stage");st.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});st.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));x0=null})}
 document.addEventListener("click",e=>{const l=e.target.closest('a[href^="#"]');if(!l)return;const id=l.getAttribute("href").slice(1);const t=id&&document.getElementById(id);if(!t)return;e.preventDefault();t.scrollIntoView({block:"start"});history.replaceState(null,"","#"+id)});
-{const st=document.getElementById("stick"),ab=document.getElementById("addBtn");if(st&&ab&&"IntersectionObserver"in window){new IntersectionObserver(([e])=>{st.classList.toggle("show",!e.isIntersecting&&e.boundingClientRect.top<0)}).observe(ab);st.querySelector("button").onclick=()=>ab.click()}}
+{const st=document.getElementById("stick"),ab=document.getElementById("addBtn");if(st&&ab){const u=()=>st.classList.toggle("show",ab.getBoundingClientRect().bottom<0);addEventListener("scroll",u,{passive:true});u();st.querySelector("button").onclick=()=>ab.click()}}
 document.querySelectorAll(".pills button").forEach(t=>t.onclick=()=>document.querySelectorAll(".pills button").forEach(x=>{x.setAttribute("aria-selected",x===t);document.getElementById(x.dataset.tab).hidden=x!==t}));
 const fmt=n=>"$"+n.toFixed(2);
 const price=t=>{const p=+t.dataset.p;document.getElementById("subNow").textContent=fmt(p*.9);document.getElementById("subWas").textContent=fmt(t.dataset.was?+t.dataset.was:p);document.getElementById("oncePrice").textContent=fmt(p)};
