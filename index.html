@@ -226,14 +226,16 @@
   <div class="wrap">
     <h2 class="h2 center">Frequently asked questions</h2>
     <div class="faq">
-      <details><summary>Why did Goat Bar choose goat casein as the protein?</summary><p>Goat casein is a slow-release protein, so it fuels you steadily instead of spiking and fading. It is naturally A2-type, and it is where the name comes from.</p></details>
-      <details><summary>What does it taste like?</summary><p>Rich and food-like. Like real chocolate chip cookie dough, sweet but not overly sweet. A satisfying, dense texture, not chalky or powdery like typical protein bars.</p></details>
-      <details><summary>Will this upset my stomach?</summary><p>Goat Bar has no soy, no sugar alcohols, no gums and no fiber syrups, the usual reasons protein bars sit like a brick. It does contain milk.</p></details>
-      <details><summary>Why does it cost more than other bars?</summary><p>Most bars are formulated to hit the lowest possible cost. Goat Bar is built on grass-fed goat casein, grass-fed collagen, real-food sweeteners and nothing synthetic. You are paying for the ingredients, not filler.</p></details>
-      <details><summary>Is this good for kids?</summary><p>It contains raw honey, which is not for babies under 1.</p></details>
-      <details><summary>Can I eat this if I'm sensitive to dairy?</summary><p>Goat Bar contains milk. Goat casein and colostrum come from milk.</p></details>
-      <details><summary>Why beef tallow?</summary><p>100% grass-fed beef tallow is the fat in the bar, used in place of seed oils.</p></details>
-      <details><summary>Why two sweeteners, raw honey and coconut nectar?</summary><p>They are the only sweeteners in the bar.</p></details>
+      <details><summary>What does it taste like?</summary><p>Like a chocolate chip cookie. Rich, dense cookie dough with real organic chocolate chips, vanilla and a pinch of salt. Sweet from raw honey and coconut nectar, but not candy-sweet. Chewy and soft, not chalky or powdery like most protein bars.</p></details>
+      <details><summary>Will this upset my stomach?</summary><p>No. Goat Bar has none of the usual reasons protein bars upset your stomach: no sugar alcohols, no fiber syrups, no gums, no soy. Those ferment in your gut and cause the gas and bloat. The protein is goat casein, which is easier to digest than the whey and soy in most bars. Colostrum and collagen are in there for your gut too.</p></details>
+      <details><summary>Why goat casein instead of whey or soy?</summary><p>Almost every protein bar uses whey or soy. Goat casein digests better than both. It forms a softer curd in your stomach than cow's milk protein, and it's naturally A2-type. It also releases protein slowly, over about 7 hours, so you get steady energy instead of a spike and a fade. Whey is mostly gone in 3 to 5 hours.</p></details>
+      <details><summary>How does it help my gut?</summary><p>Two ingredients do the work. Colostrum, the first milk, rebuilds your gut lining, especially during intense activity: in athletes training hard in the heat, it cut the gut leakiness that tough exercise causes. Grass-fed collagen gives your gut lining the glycine and proline it's rebuilt with.</p></details>
+      <details><summary>Will it give me a sugar crash?</summary><p>No. Slow-release goat casein and grass-fed tallow give you steady energy for hours. It's sweetened with raw honey and coconut nectar, not a stack of processed syrups.</p></details>
+      <details><summary>Can I eat this if I'm sensitive to dairy?</summary><p>Goat Bar contains milk, so it's not for a true milk allergy. If whey protein bars bother you, Goat Bar is built to digest better than a whey bar: goat casein instead of whey, naturally A2-type, and none of the sugar alcohols or fiber syrups that make it worse.</p></details>
+      <details><summary>Is this good for kids?</summary><p>Yes. It's real food: 9 ingredients, nothing synthetic, no sugar alcohols or artificial sweeteners. It does contain raw honey, so it's not for babies under 1.</p></details>
+      <details><summary>Why beef tallow?</summary><p>It's an energy powerhouse. 100% grass-fed beef tallow is dense, slow-burning fat for long days. It's mostly saturated fat, so it doesn't oxidize as easily as the seed oils in most bars.</p></details>
+      <details><summary>Why two sweeteners, raw honey and coconut nectar?</summary><p>They're natural sweeteners that bring their own minerals, enzymes and antioxidants. Together they give the cookie taste without sugar alcohols or artificial sweeteners.</p></details>
+      <details><summary>Why does it cost more than other bars?</summary><p>Most bars are made to hit the lowest possible cost. Goat Bar is built on grass-fed goat casein, grass-fed collagen, colostrum, real-food sweeteners and nothing synthetic. You're paying for the ingredients, not filler.</p></details>
       
       
     </div>
@@ -275,6 +277,7 @@ const show=i=>{cur=(i+G.length)%G.length;main.src=`/assets/${G[cur][0]}.jpg`;mai
 G.forEach(([f,a],i)=>{const b=document.createElement("button");b.setAttribute("aria-label",a);b.innerHTML=`<img src="/assets/${f}.jpg" alt="">`;b.onclick=()=>show(i);th.appendChild(b)});show(0);
 document.getElementById("prev").onclick=()=>show(cur-1);document.getElementById("next").onclick=()=>show(cur+1);
 {let x0=null;const st=document.querySelector(".stage");st.addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});st.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));x0=null})}
+document.addEventListener("click",e=>{const l=e.target.closest('a[href^="#"]');if(!l)return;const id=l.getAttribute("href").slice(1);const t=id&&document.getElementById(id);if(!t)return;e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"});history.replaceState(null,"","#"+id)});
 document.querySelectorAll(".pills button").forEach(t=>t.onclick=()=>document.querySelectorAll(".pills button").forEach(x=>{x.setAttribute("aria-selected",x===t);document.getElementById(x.dataset.tab).hidden=x!==t}));
 const fmt=n=>"$"+n.toFixed(2);
 const price=t=>{const p=+t.dataset.p;document.getElementById("subNow").textContent=fmt(p*.9);document.getElementById("subWas").textContent=fmt(t.dataset.was?+t.dataset.was:p);document.getElementById("oncePrice").textContent=fmt(p)};
